@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gatsby-deployment
+  labels:
+    app: gatsby
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gatsby
+  template:
+    metadata:
+      labels:
+        app: gatsby
+    spec:
+      containers:
+        - name: gatsby
+          image: gcr.io/ardito-website-307121/gatsby:latest
+          ports:
+            - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gatsby-service
+spec:
+  selector:
+    app: gatsby
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 31000
+      nodePort: 31000

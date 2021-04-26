@@ -1,0 +1,7 @@
+.cache/
+node_modules/
+public/
+.git/
+npm-debug.log
+.DS_Store
+.gitignore
