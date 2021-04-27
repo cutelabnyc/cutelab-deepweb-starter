@@ -26,11 +26,11 @@ export const InnerContent = styled.div`
 /*================================*/
 
 interface FlexProps {
-    flex?: number,
-    margin?: string,
-    padding?: string,
-    border?: string,
-}
+    flex?: number;
+    margin?: string;
+    padding?: string;
+    border?: string;
+};
 
 export const Row = styled.div<FlexProps>`
   display: flex;

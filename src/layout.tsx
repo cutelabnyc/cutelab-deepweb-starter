@@ -4,6 +4,7 @@ import { GlobalStyle } from './styles/globals';
 import { MainWrapper } from './styles/grids';
 import Footer from './components/footer'
 import Header from './components/header'
+import { Helmet } from 'react-helmet'
 
 interface LayoutProps {
     children: ReactNode;
@@ -41,6 +42,10 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
 
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>DeepWeb Starter</title>
+            </Helmet>
             <GlobalStyle />
             <MainWrapper>
                 <Header name={name} description={description} />

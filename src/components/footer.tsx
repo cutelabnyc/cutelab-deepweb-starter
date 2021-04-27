@@ -2,9 +2,9 @@ import * as React from 'react';
 
 interface FooterProps {
     copyright: string;
-}
+};
 
-const disclaimer: string = 'ABOLISH INTELLECTUAL PROPERTY';
+const disclaimer: string = 'NO MORE INTELLECTUAL PROPERTY';
 
 const Footer: React.FC<FooterProps> = ({copyright}) => {
     return (

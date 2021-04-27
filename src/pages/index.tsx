@@ -1,18 +1,18 @@
 import React, { ReactNode } from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import Layout from '../layout';
 import { StyledLink } from '../styles/globals';
-import { Row, Column, Container } from '../styles/grids';
+import {  Column, Container, Row } from '../styles/grids';
+import Layout from '../layout';
 
 interface IndexPageProps {
-    children: ReactNode
-}
+    children: ReactNode;
+};
 
 interface ResourceData {
     allMarkdownRemark: {
         edges: Array<any> // TODO: Typify
-    }
-}
+    };
+};
 
 const IndexPage: React.FC<IndexPageProps> = () => {
 
@@ -40,8 +40,13 @@ const IndexPage: React.FC<IndexPageProps> = () => {
         margin: '10px',
     };
 
+    const GraeberQuote = `The ultimate hidden truth of the world is that it is something we make. And could just as easily make differently.`;
+
     return (
         <Layout>
+            <h1>"{GraeberQuote}"</h1>
+            <h3> — David Graeber, 1961-2020</h3>
+            <hr /><br />
             <h1>Resources:</h1>
             <Container>
                 <Row>

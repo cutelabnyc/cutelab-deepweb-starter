@@ -3,26 +3,27 @@ import { graphql } from 'gatsby';
 import Layout from '../layout';
 
 // TODO: TS this shit up
-
 export const ql_resources = graphql`
-  query($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        date
-        slug
-        title
-      }
+    query($slug: String!) {
+        markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+            html
+            frontmatter {
+                date
+                slug
+                title
+            }
+        }
     }
-  }
-`
+`;
 
 interface ResourceProps {
     data: any;
-}
+};
 
 const Resource: React.FC<ResourceProps> = ({data}) => {
-    const { frontmatter, html } = data.markdownRemark
+
+    const { frontmatter, html } = data.markdownRemark;
+    
     return (
             <Layout>
                 <h1>{frontmatter.title}</h1>
