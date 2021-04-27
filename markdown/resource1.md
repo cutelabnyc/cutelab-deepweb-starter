@@ -1,6 +1,6 @@
 ---
 title: Resource 1
-date: "06-03-1995"
+date: 06-03-1995
 slug: resource-1
 ---
 

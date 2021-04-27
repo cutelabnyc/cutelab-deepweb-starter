@@ -21,8 +21,8 @@ interface LayoutData {
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
 
-    const data: LayoutData = useStaticQuery(graphql`
-        query myQuery {
+    const { site }: LayoutData = useStaticQuery(graphql`
+        query  {
             site {
                 siteMetadata {
                     name
@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
         name,
         description,
         copyright,
-    } = data.site.siteMetadata;
+    } = site.siteMetadata;
 
     return (
         <>

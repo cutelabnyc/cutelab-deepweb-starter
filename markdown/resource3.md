@@ -1,6 +1,6 @@
 ---
 title: Resource 3
-date: "06-03-2021"
+date: 06-03-2021
 slug: resource-3
 ---
 

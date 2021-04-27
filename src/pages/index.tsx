@@ -1,27 +1,39 @@
-import * as React from 'react';
+import React, { ReactNode } from 'react';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import Layout from '../layout';
+import { StyledLink } from '../styles/globals';
 import { Row, Column, Container } from '../styles/grids';
 
 interface IndexPageProps {
-    props: any;
+    children: ReactNode
 }
 
-const LoremIpsum: Array<string> = [`Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                    quae ab illo inventore veritatis et quasi architecto beatae vitae
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit`,
-                    `aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-                    qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-                    ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
-                    eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.`,
-                    `Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-                    laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-                    reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
-                    vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?`];
+interface ResourceData {
+    allMarkdownRemark: {
+        edges: Array<any> // TODO: Typify
+    }
+}
 
 const IndexPage: React.FC<IndexPageProps> = () => {
 
-    const ColumnParams = {
+    const { allMarkdownRemark }: ResourceData = useStaticQuery(graphql`
+        query {
+            allMarkdownRemark {
+                edges {
+                    node {
+                        html
+                        frontmatter {
+                            date
+                            title
+                            slug
+                        }
+                    }
+                }
+            }
+        }
+    `);
+
+    const ColumnProps = {
         flex: 1,
         padding: '20px',
         border: '1px solid black',
@@ -33,11 +45,14 @@ const IndexPage: React.FC<IndexPageProps> = () => {
             <h1>Resources:</h1>
             <Container>
                 <Row>
-                   {LoremIpsum.map((text, id) => {
+                   {allMarkdownRemark.edges.map((markdown, key) => {
                         return(
-                            <Column {...ColumnParams} key={id}>
-                                <h2>Yo</h2>
-                                <p>{text}</p>
+                            <Column {...ColumnProps} key={key}>
+                                <StyledLink to={`/${markdown.node.frontmatter.slug}`}>
+                                    <h2>{markdown.node.frontmatter.title}</h2>
+                                </StyledLink>
+                                <h3>{markdown.node.frontmatter.date}</h3>
+                                <div dangerouslySetInnerHTML={{ __html: markdown.node.html }} />
                             </Column>
                         )
                     })}

@@ -1,20 +1,29 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { Link } from 'gatsby';
 
 export const GlobalStyle = createGlobalStyle`
     header {
         padding: 20px;
-        background-color: rgb(0, 0, 0);
+        background-color: #000000;
         color: #15FF00;
         font-family: Inconsolata;
     }
     main {
         margin: 20px;
-        background-color: rgb(255, 255, 255);
+        background-color: #FFFFFF;
         font-family: Inconsolata;
     }
     footer {
-        margin: 20px;
-        background-color: rgb(255, 255, 255);
+        padding: 20px;
+        background-color: #000000;
+        color: #15FF00;
         font-family: Inconsolata;
     }
 `;
+
+export const StyledLink = styled(Link)`
+    color: #000000;
+    &:hover {
+        color: #15FF00;
+    }
+`
