@@ -1,18 +1,19 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React, { ReactNode } from 'react';
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import Layout from '../layout';
 import { StyledLink } from '../styles/globals';
 import {  Column, Container, Row } from '../styles/grids';
-import Layout from '../layout';
 
 interface IndexPageProps {
     children: ReactNode;
-};
+}
 
+// TODO: Typify
 interface ResourceData {
     allMarkdownRemark: {
-        edges: Array<any> // TODO: Typify
+        edges: any[];
     };
-};
+}
 
 const IndexPage: React.FC<IndexPageProps> = () => {
 
@@ -34,10 +35,10 @@ const IndexPage: React.FC<IndexPageProps> = () => {
     `);
 
     const ColumnProps = {
-        flex: 1,
-        padding: '20px',
         border: '1px solid black',
+        flex: 1,
         margin: '10px',
+        padding: '20px',
     };
 
     const GraeberQuote = `The ultimate hidden truth of the world is that it is something we make. And could just as easily make differently.`;
@@ -59,8 +60,8 @@ const IndexPage: React.FC<IndexPageProps> = () => {
                                 <h3>{markdown.node.frontmatter.date}</h3>
                                 <div dangerouslySetInnerHTML={{ __html: markdown.node.html }} />
                             </Column>
-                        )
-                    })}
+                        );
+                    })};
                 </Row>
             </Container>
         </Layout>

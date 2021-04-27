@@ -3,7 +3,7 @@ import * as React from 'react';
 interface HeaderProps {
     name: string;
     description: string;
-};
+}
 
 const Header: React.FC<HeaderProps> = ({name, description}) => {
     return (

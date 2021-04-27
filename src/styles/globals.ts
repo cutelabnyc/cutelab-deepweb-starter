@@ -1,5 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
 import { Link } from 'gatsby';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     header {
@@ -8,11 +8,13 @@ export const GlobalStyle = createGlobalStyle`
         color: #15FF00;
         font-family: Inconsolata;
     }
+
     main {
         margin: 20px;
         background-color: #FFFFFF;
         font-family: Inconsolata;
     }
+
     footer {
         padding: 20px;
         background-color: #000000;
@@ -26,4 +28,4 @@ export const StyledLink = styled(Link)`
     &:hover {
         color: #15FF00;
     }
-`
+`;

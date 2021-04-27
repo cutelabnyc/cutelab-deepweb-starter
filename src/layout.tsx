@@ -1,10 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { ReactNode } from 'react';
+import { Helmet } from 'react-helmet';
+import Footer from './components/footer';
+import Header from './components/header';
 import { GlobalStyle } from './styles/globals';
 import { MainWrapper } from './styles/grids';
-import Footer from './components/footer'
-import Header from './components/header'
-import { Helmet } from 'react-helmet'
 
 interface LayoutProps {
     children: ReactNode;
@@ -16,14 +16,14 @@ interface LayoutData {
             name: string,
             description: string,
             copyright: string,
-        }
-    }
+        },
+    };
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
 
     const { site }: LayoutData = useStaticQuery(graphql`
-        query  {
+        query {
             site {
                 siteMetadata {
                     name
@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
                 }
             }
         }
-    `)
+    `);
 
     const {
         name,

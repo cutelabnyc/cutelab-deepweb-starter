@@ -2,7 +2,7 @@ import * as React from 'react';
 
 interface FooterProps {
     copyright: string;
-};
+}
 
 const disclaimer: string = 'NO MORE INTELLECTUAL PROPERTY';
 

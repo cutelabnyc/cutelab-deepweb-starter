@@ -3,7 +3,7 @@ import Layout from '../layout';
 
 interface Props404 {
     props: any;
-};
+}
 
 const PageNotFound: React.FC<Props404> = () => {
     return (
