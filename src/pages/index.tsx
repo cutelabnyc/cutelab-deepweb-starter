@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { ReactNode } from 'react';
+import 'reflect-metadata';
 import Layout from '../layout';
 import { StyledLink } from '../styles/globals';
 import {  Column, Container, Row } from '../styles/grids';
@@ -61,7 +62,7 @@ const IndexPage: React.FC<IndexPageProps> = () => {
                                 <div dangerouslySetInnerHTML={{ __html: markdown.node.html }} />
                             </Column>
                         );
-                    })};
+                    })}
                 </Row>
             </Container>
         </Layout>
